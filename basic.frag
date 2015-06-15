@@ -6,7 +6,7 @@ uniform sampler2D tex;
  
 void main(){
 	if (textureSize(tex, 0).x > 0) {
-		color = texture2D(tex, pass_UV);
+		color = texture(tex, pass_UV);
 	}
 	else {
 		color = pass_Color;
