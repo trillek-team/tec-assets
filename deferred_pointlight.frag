@@ -48,7 +48,7 @@ vec3 ExtractCameraPos(mat4 a_modelView)
   // Get plane normals 
   vec3 n1 = modelViewT[0].xyz;
   vec3 n2 = modelViewT[1].xyz;
-  vec3 n3 = modelViewT[1].xyz;
+  vec3 n3 = modelViewT[2].xyz;
  
   // Get plane distances
   float d1 = modelViewT[0].w;
