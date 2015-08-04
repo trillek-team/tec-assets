@@ -1,5 +1,7 @@
 #version 330
 
+in vec4 ShadowCoord; 
+
 struct BaseLight
 {
 	vec3 Color;
@@ -13,9 +15,12 @@ struct DirectionalLight
 	vec3 Direction;
 };
 
+uniform mat4 DepthBiasMVP;
+uniform mat4 gCameraPos;
 uniform sampler2D gPositionMap;
 uniform sampler2D gColorMap;
 uniform sampler2D gNormalMap;
+uniform sampler2D gShadowMap;
 uniform DirectionalLight gDirectionalLight;
 uniform vec2 gScreenSize;
 uniform vec3 gEyeWorldPos;
@@ -67,8 +72,16 @@ void main()
 	vec2 TexCoord = CalcTexCoord();
 	vec3 WorldPos = texture(gPositionMap, TexCoord).xyz;
 	vec3 Color = texture(gColorMap, TexCoord).xyz;
-	vec3 Normal = texture(gNormalMap, TexCoord).xyz;
-	Normal = normalize(Normal);
+	vec3 Normal = texture(gNormalMap, TexCoord).xyz * 2.0 - 1.0;
+	float visibility = 1.0;
+	
+	vec4 projectedEyeDir = DepthBiasMVP * vec4(WorldPos, 1.0);
+	vec3 Shadow = texture(gShadowMap, projectedEyeDir.xy).xyz;
+	if ( Shadow.z < (ShadowCoord.z - 0.0001)){
+		visibility = 0.5;
+	}
+	
+	//gl_FragColor = vec4(Shadow, 1.0);// * Shadow.z;
 
-	gl_FragColor = vec4(Color, 1.0) * CalcDirectionalLight(WorldPos, Normal);
+	gl_FragColor =  vec4(Color, 1.0) * CalcDirectionalLight(WorldPos, Normal) * visibility;
 }
