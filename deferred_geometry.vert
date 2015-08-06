@@ -1,4 +1,5 @@
 #version 330 
+
 layout(location = 0) in vec3 in_Position;
 layout(location = 1) in vec4 in_Color;
 layout(location = 2) in vec3 in_Norm;
@@ -12,8 +13,9 @@ uniform mat4 projection;
 uniform mat4 animation_matrix[33];
 uniform int animated;
 
-out vec4 pass_Color;
-out vec2 pass_UV;
+out vec2 TexCoord0; 
+out vec3 Normal0; 
+out vec3 WorldPos0; 
 
 void main(void)
 {
@@ -37,6 +39,7 @@ void main(void)
 	vec4 p_pos = projection * v_pos;
 	gl_Position = p_pos;
 	
-	pass_Color = in_Color;
-	pass_UV = in_UV;
+	TexCoord0 = in_UV;
+	Normal0 = (model * animated_norm).xyz; 
+	WorldPos0 = (model * animated_pos).xyz;
 }
