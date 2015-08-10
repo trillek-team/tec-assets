@@ -1,7 +1,7 @@
 #version 330 core
 in vec4 pass_Color;
-out vec4 color;
+layout (location = 1) out vec3 DiffuseOut; 
 
 void main(){
-	color = pass_Color;
+	DiffuseOut = pass_Color.xyz;
 }
