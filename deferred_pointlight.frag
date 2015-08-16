@@ -30,6 +30,8 @@ uniform vec2 gScreenSize;
 float gMatSpecularIntensity = 0.5;
 float gSpecularPower = 0.5;
 
+out vec4 finalColor;
+
 vec3 ExtractCameraPos(mat4 a_modelView)
 {
   // Get the 3 basis vector planes at the camera origin and transform them into model space.
@@ -102,13 +104,13 @@ vec4 CalcPointLight(vec3 WorldPos, vec3 Normal)
 
 	vec4 Color = CalcLightInternal(gPointLight.Base, LightDirection, WorldPos, Normal);
 
-	float Attenuation =	gPointLight.Atten.Constant +
-						gPointLight.Atten.Linear * Distance +
-						gPointLight.Atten.Exp * Distance * Distance;
+	float LightAttenuation =	gPointLight.Atten.Constant +
+								gPointLight.Atten.Linear * Distance +
+								gPointLight.Atten.Exp * Distance * Distance;
 
-	Attenuation = max(1.0, Attenuation);
+	LightAttenuation = max(LightAttenuation, 1.0);
 
-	return Color / Attenuation;
+	return Color / LightAttenuation;
 }
 
 
@@ -124,5 +126,5 @@ void main()
 	vec3 Color = texture(gColorMap, TexCoord).xyz;
 	vec3 Normal = texture(gNormalMap, TexCoord).xyz * 2.0 - 1.0;
 
-	gl_FragColor = vec4(Color, 1.0) * CalcPointLight(WorldPos, Normal);
+	finalColor = vec4(Color, 1.0) * CalcPointLight(WorldPos, Normal);
 }
