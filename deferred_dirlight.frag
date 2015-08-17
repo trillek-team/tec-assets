@@ -1,6 +1,7 @@
 #version 330
 
 in vec4 ShadowCoord; 
+out vec4 finalColor;
 
 struct BaseLight
 {
@@ -81,7 +82,5 @@ void main()
 		visibility = 0.5;
 	}
 	
-	//gl_FragColor = vec4(Shadow, 1.0);// * Shadow.z;
-
-	gl_FragColor =  vec4(Color, 1.0) * CalcDirectionalLight(WorldPos, Normal) * visibility;
+	finalColor = vec4(Color, 1.0) * CalcDirectionalLight(WorldPos, Normal) * visibility;
 }
