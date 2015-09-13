@@ -1,9 +1,9 @@
 
-assets/entities/0.proto
-assets/entities/1.proto
-assets/entities/99.proto
-assets/entities/100.proto
-assets/entities/101.proto
-assets/entities/200.proto
-assets/entities/210.proto
-assets/entities/1000.proto
+entities/0.proto
+entities/1.proto
+entities/99.proto
+entities/100.proto
+entities/101.proto
+entities/200.proto
+entities/210.proto
+entities/1000.proto
