@@ -16,6 +16,7 @@ uniform int animated;
 out vec2 TexCoord0; 
 out vec3 Normal0; 
 out vec3 WorldPos0; 
+out vec4 Color;
 
 void main(void)
 {
@@ -42,4 +43,5 @@ void main(void)
 	TexCoord0 = in_UV;
 	Normal0 = (model * animated_norm).xyz; 
 	WorldPos0 = (model * animated_pos).xyz;
+	Color = in_Color;
 }
