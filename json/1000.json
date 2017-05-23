@@ -1,0 +1,43 @@
+{
+ "id": "1000",
+ "components": [
+  {
+   "position": {
+    "x": 0,
+    "y": -1.1,
+    "z": 0,
+    "offset": {
+     "x": 0,
+     "y": 0,
+     "z": 0
+    }
+   }
+  },
+  {
+   "Scale": {
+    "x": 1,
+    "y": 1,
+    "z": 1
+   }
+  },
+  {
+   "collisionBody": {
+    "disableDeactivation": false,
+    "disableRotation": false,
+    "box": {
+     "xExtent": 100,
+     "yExtent": 0.1,
+     "zExtent": 100
+    },
+    "mass": 0
+   }
+  },
+  {
+   "renderable": {
+    "shaderName": "deferred",
+    "meshName": "rooms/hanger/hanger.md5mesh",
+    "hidden": false
+   }
+  }
+ ]
+}

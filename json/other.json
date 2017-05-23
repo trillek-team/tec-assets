@@ -1,0 +1,53 @@
+{
+ "id": "1",
+ "components": [
+  {
+   "renderable": {
+    "shaderName": "deferred",
+    "meshName": "bot/botplay.obj",
+    "hidden": false
+   }
+  },
+  {
+   "position": {
+    "x": -7.5281935,
+    "y": -0.0076328712,
+    "z": -9.5327549,
+    "offset": {
+     "x": 0,
+     "y": 0,
+     "z": 0
+    }
+   }
+  },
+  {
+   "orientation": {
+    "x": -0.032379158,
+    "y": 0.92523134,
+    "z": -0.081141762,
+    "w": -0.369208,
+    "offset": {
+     "x": 0,
+     "y": 0,
+     "z": 0
+    }
+   }
+  },
+  {
+   "view": {
+    "active": true
+   }
+  },
+  {
+   "collisionBody": {
+    "disableDeactivation": true,
+    "disableRotation": true,
+    "capsule": {
+     "radius": 0.5,
+     "height": 1
+    },
+    "mass": 1
+   }
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "id": "0",
+ "components": [
+  {
+   "renderable": {
+    "shaderName": "",
+    "meshName": "",
+    "hidden": false
+   }
+  }
+ ]
+}

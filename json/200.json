@@ -1,0 +1,47 @@
+{
+ "id": "200",
+ "components": [
+  {
+   "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "offset": {
+     "x": 0,
+     "y": 0,
+     "z": 0
+    }
+   }
+  },
+  {
+   "Scale": {
+    "x": 10,
+    "y": 10,
+    "z": 10
+   }
+  },
+  {
+   "audioSource": {
+    "looping": true,
+    "audioName": "theme.ogg",
+    "playing": true,
+    "volume": 15
+   }
+  },
+  {
+   "pointLight": {
+    "colorX": 1.9607843,
+    "colorY": 0,
+    "colorZ": 0,
+    "ambientIntensity": 1,
+    "diffuseIntensity": 0.1,
+    "attenuation": {
+     "constant": 0.1,
+     "linear": 0.1,
+     "exponential": 0.2
+    },
+    "cutoff": 0
+   }
+  }
+ ]
+}

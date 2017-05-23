@@ -1,0 +1,70 @@
+{
+ "id": "99",
+ "components": [
+  {
+   "position": {
+    "x": 1.5085623e-10,
+    "y": 0,
+    "z": -5,
+    "offset": {
+     "x": 0,
+     "y": -0.75,
+     "z": 0
+    }
+   }
+  },
+  {
+   "orientation": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "w": 1,
+    "offset": {
+     "x": -1.5707964,
+     "y": -1.5707964,
+     "z": 0
+    }
+   }
+  },
+  {
+   "Scale": {
+    "x": 0.25,
+    "y": 0.25,
+    "z": 0.25
+   }
+  },
+  {
+   "velocity": {
+    "linearX": 0,
+    "linearY": 0,
+    "linearZ": 0,
+    "angularX": 0,
+    "angularY": 0,
+    "angularZ": 0
+   }
+  },
+  {
+   "collisionBody": {
+    "disableDeactivation": false,
+    "disableRotation": true,
+    "capsule": {
+     "radius": 0.5,
+     "height": 0.5
+    },
+    "mass": 0
+   }
+  },
+  {
+   "renderable": {
+    "shaderName": "deferred",
+    "meshName": "bob/bob.md5mesh",
+    "hidden": false
+   }
+  },
+  {
+   "animation": {
+	"animationName" : "bob/bob.md5anim"
+    }
+  }
+ ]
+}
