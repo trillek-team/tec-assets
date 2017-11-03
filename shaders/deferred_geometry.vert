@@ -21,7 +21,7 @@ out vec4 Color;
 void main(void)
 {
     vec4 animated_pos = vec4(in_Position, 1.0);
-    vec4 animated_norm =  vec4(in_Norm, 1.0);
+    vec4 animated_norm =  vec4(in_Norm, 0.0);
     if (animated == 1) {
         animated_pos  = (animation_matrix[boneIndex.x] * vec4(in_Position, 1.0)) * boneWeight.x;
         animated_norm = (mat3x4(animation_matrix[boneIndex.x]) * in_Norm) * boneWeight.x;

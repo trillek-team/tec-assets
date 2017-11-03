@@ -32,43 +32,6 @@ float gSpecularPower = 0.5;
 
 out vec4 finalColor;
 
-vec3 ExtractCameraPos(mat4 a_modelView)
-{
-  // Get the 3 basis vector planes at the camera origin and transform them into model space.
-  //  
-  // NOTE: Planes have to be transformed by the inverse transpose of a matrix
-  //       Nice reference here: http://www.opengl.org/discussion_boards/showthread.php/159564-Clever-way-to-transform-plane-by-matrix
-  //
-  //       So for a transform to model space we need to do:
-  //            inverse(transpose(inverse(MV)))
-  //       This equals : transpose(MV) - see Lemma 5 in http://mathrefresher.blogspot.com.au/2007/06/transpose-of-matrix.html
-  //
-  // As each plane is simply (1,0,0,0), (0,1,0,0), (0,0,1,0) we can pull the data directly from the transpose matrix.
-  //  
-  mat4 modelViewT = transpose(a_modelView);
- 
-  // Get plane normals 
-  vec3 n1 = modelViewT[0].xyz;
-  vec3 n2 = modelViewT[1].xyz;
-  vec3 n3 = modelViewT[2].xyz;
- 
-  // Get plane distances
-  float d1 = modelViewT[0].w;
-  float d2 = modelViewT[1].w;
-  float d3 = modelViewT[2].w;
- 
-  // Get the intersection of these 3 planes
-  // http://paulbourke.net/geometry/3planes/
-  vec3 n2n3 = cross(n2, n3);
-  vec3 n3n1 = cross(n3, n1);
-  vec3 n1n2 = cross(n1, n2);
- 
-  vec3 top = (n2n3 * d1) + (n3n1 * d2) + (n1n2 * d3);
-  float denom = dot(n1, n2n3);
- 
-  return top / -denom;
-}
-
 vec4 CalcLightInternal(BaseLight Light,
 					   vec3 LightDirection,
 					   vec3 WorldPos,
@@ -83,8 +46,7 @@ vec4 CalcLightInternal(BaseLight Light,
 	if (DiffuseFactor > 0) {
 		DiffuseColor = vec4(Light.Color, 1.0f) * Light.DiffuseIntensity * DiffuseFactor;
 
-		vec3 eye_pos = ExtractCameraPos(view);
-		vec3 VertexToEye = normalize(eye_pos - WorldPos);
+		vec3 VertexToEye = normalize(view[3].xyz - WorldPos);
 		vec3 LightReflect = normalize(reflect(LightDirection, Normal));
 		float SpecularFactor = dot(VertexToEye, LightReflect);
 		SpecularFactor = pow(SpecularFactor, gSpecularPower);
@@ -124,7 +86,8 @@ void main()
 	vec2 TexCoord = CalcTexCoord();
 	vec3 WorldPos = texture(gPositionMap, TexCoord).xyz;
 	vec3 Color = texture(gColorMap, TexCoord).xyz;
-	vec3 Normal = texture(gNormalMap, TexCoord).xyz * 2.0 - 1.0;
+	vec3 Normal = texture(gNormalMap, TexCoord).xyz;// * 2.0 - 1.0;
+	Normal = normalize(Normal);
 
 	finalColor = vec4(Color, 1.0) * CalcPointLight(WorldPos, Normal);
 }

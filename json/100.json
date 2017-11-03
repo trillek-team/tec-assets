@@ -28,7 +28,7 @@
   },
   {
    "renderable": {
-    "shaderName": "debug",
+    "shaderName": "deferred",
     "meshName": "bob",
     "hidden": false
    }
