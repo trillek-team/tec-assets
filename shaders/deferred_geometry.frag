@@ -15,7 +15,7 @@ uniform sampler2D gColorMap;
 void main() 
 { 
     WorldPosOut = WorldPos0; 
-    DiffuseOut = (texture(gColorMap, TexCoord0) * Color).xyz; 
+    DiffuseOut = (texture(gColorMap, TexCoord0)).xyz; 
     NormalOut = normalize(Normal0); 
     TexCoordOut = vec3(TexCoord0, 0.0); 
 }

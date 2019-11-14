@@ -28,7 +28,7 @@ uniform sampler2D gNormalMap;
 uniform PointLight gPointLight;
 uniform vec2 gScreenSize;
 float gMatSpecularIntensity = 0.5;
-float gSpecularPower = 0.5;
+float gSpecularPower = 32;
 
 out vec4 finalColor;
 
@@ -78,7 +78,7 @@ vec4 CalcPointLight(vec3 WorldPos, vec3 Normal)
 
 vec2 CalcTexCoord()
 {
-    return gl_FragCoord.xy / vec2(gScreenSize.x, gScreenSize.y);
+    return gl_FragCoord.xy / gScreenSize;
 }
 
 void main()
@@ -86,7 +86,7 @@ void main()
 	vec2 TexCoord = CalcTexCoord();
 	vec3 WorldPos = texture(gPositionMap, TexCoord).xyz;
 	vec3 Color = texture(gColorMap, TexCoord).xyz;
-	vec3 Normal = texture(gNormalMap, TexCoord).xyz;// * 2.0 - 1.0;
+	vec3 Normal = texture(gNormalMap, TexCoord).xyz;
 	Normal = normalize(Normal);
 
 	finalColor = vec4(Color, 1.0) * CalcPointLight(WorldPos, Normal);

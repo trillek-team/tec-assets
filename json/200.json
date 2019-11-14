@@ -34,14 +34,19 @@
     "colorY": 0,
     "colorZ": 0,
     "ambientIntensity": 1,
-    "diffuseIntensity": 0.1,
+    "diffuseIntensity": 0.5,
     "attenuation": {
-     "constant": 0.1,
-     "linear": 0.1,
-     "exponential": 0.2
+     "constant":10,
+     "linear": 10,
+     "exponential": 10
     },
     "cutoff": 0
    }
+  },
+  {
+    "luaScript": {
+      "script_name": "scripts/test.lua"
+    }
   }
  ]
 }
