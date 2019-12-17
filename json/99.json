@@ -63,6 +63,7 @@
   },
   {
    "animation": {
+    "meshName": "bob/bob.md5mesh",
 	"animationName" : "bob/bob.md5anim"
     }
   }
