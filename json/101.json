@@ -5,7 +5,12 @@
    "renderable": {
     "shaderName": "deferred",
     "meshName": "vidstand/VidStand_Full.obj",
-    "hidden": false
+    "hidden": false,
+    "position": {
+     "x": 0,
+     "y": -0.55,
+     "z": 0
+    },
    }
   },
   {
@@ -13,11 +18,6 @@
     "x": -5,
     "y": -0.5,
     "z": -2,
-    "offset": {
-     "x": 0,
-     "y": -0.55,
-     "z": 0
-    }
    }
   },
   {
