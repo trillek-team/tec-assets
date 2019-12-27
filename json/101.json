@@ -10,14 +10,14 @@
      "x": 0,
      "y": -0.55,
      "z": 0
-    },
+    }
    }
   },
   {
    "position": {
     "x": -5,
     "y": -0.5,
-    "z": -2,
+    "z": -2
    }
   },
   {
@@ -58,7 +58,8 @@
    "computer": {
     "devices": [
      {
-      "slot": 1
+      "slot": 1,
+	  "computerKeyboard": {}
      },
      {
       "slot": 5,
@@ -105,7 +106,7 @@
       "sleeping": false
      }
     },
-    "romFile": ""
+    "romFile": "asm/type1.ffi"
    }
   }
  ]
