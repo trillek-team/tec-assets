@@ -1,0 +1,41 @@
+{
+   "id":"1",
+   "components":[
+      {
+         "renderable":{
+            "shaderName":"debug",
+            "meshName":"bot/botplay.obj",
+			"orientation":{
+				"x": 0,
+				"y": 1.5707964,
+				"z":0,
+			}
+         }
+      },
+      {
+         "position":{
+            "x":-7.52819347,
+            "y":-0.00763287116,
+            "z":-9.5327549
+         }
+      },
+      {
+         "orientation":{
+            "x":-0.0323791578,
+            "y":0.925231338,
+            "z":-0.0811417624
+         }
+      },
+      {
+         "collisionBody":{
+            "disableDeactivation":true,
+            "disableRotation":true,
+            "capsule":{
+               "radius":0.5,
+               "height":1
+            },
+            "mass":0
+         }
+      }
+   ]
+}
