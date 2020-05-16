@@ -6,7 +6,6 @@ bar["key"] = "there"
 
 print("test")
 
-e = Entity.new{1000}
-e.set_position(99)
-
-
+function onUpdate(delta)
+--  print(tostring(delta)) -- noisy, just showing example
+end
