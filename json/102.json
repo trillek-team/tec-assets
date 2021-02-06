@@ -1,0 +1,96 @@
+{
+	"id": "102",
+	"components": [
+		{
+			"renderable": {
+				"shaderName": "deferred",
+				"meshName": "vidstand/VidStand_Full.obj",
+				"hidden": false,
+				"position": {
+					"x": 0,
+					"y": -0.55,
+					"z": 0
+				}
+			}
+		},
+		{
+			"position": {
+				"x": -4,
+				"y": -0.5,
+				"z": -1
+			}
+		},
+		{
+			"Scale": {
+				"x": 1,
+				"y": 1,
+				"z": 1
+			}
+		},
+		{
+			"collisionBody": {
+				"disableDeactivation": false,
+				"disableRotation": false,
+				"box": {
+					"xExtent": 0.25,
+					"yExtent": 0.55,
+					"zExtent": 0.25
+				},
+				"mass": 0
+			}
+		},
+		{
+			"pointLight": {
+				"colorX": 0,
+				"colorY": 1,
+				"colorZ": 0,
+				"ambientIntensity": 0.5,
+				"diffuseIntensity": 0.5,
+				"attenuation": {
+					"constant": 0.1,
+					"linear": 0.1,
+					"exponential": 1
+				},
+				"cutoff": 0
+			}
+		},
+		{
+			"computer": {
+				"devices": [
+					{
+						"slot": 1,
+						"computerKeyboard": {}
+					},
+					{
+						"slot": 5,
+						"computerScreen": {
+							"textBuffer": "",
+							"fontBuffer": "",
+							"bufferPtr": 4096,
+							"fontPtr": 0,
+							"vsyncMsg": 0,
+							"a": 4096,
+							"b": 0,
+							"d": 52685,
+							"e": 52685
+						}
+					}
+				],
+				"ram": "",
+				"cpu": {
+					"dcpu16n": {
+						"registers": [],
+						"pc": 0,
+						"waitCycles": 1,
+						"intMsg": 0,
+						"interrupt": false,
+						"stepMode": false,
+						"skiping": false,
+						"sleeping": false
+					}
+				},
+				"romFile": "asm/hello.ffi"
+			}
+		}
+	]
+}
