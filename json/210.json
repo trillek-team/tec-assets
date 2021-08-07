@@ -3,9 +3,9 @@
  "components": [
   {
    "directionalLight": {
-    "colorX": 1,
-    "colorY": 1,
-    "colorZ": 1,
+    "colorX": 0.5,
+    "colorY": 0.5,
+    "colorZ": 0.5,
     "ambientIntensity": 0.5,
     "diffuseIntensity": 0.5,
     "cutoff": 0,

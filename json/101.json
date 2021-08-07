@@ -41,9 +41,9 @@
   },
   {
    "pointLight": {
-    "colorX": 0,
+    "colorX": 0.25,
     "colorY": 1,
-    "colorZ": 0,
+    "colorZ": 0.25,
     "ambientIntensity": 0.5,
     "diffuseIntensity": 0.5,
     "attenuation": {
