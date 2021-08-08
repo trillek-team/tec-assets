@@ -1,22 +1,19 @@
 #version 330
 
-struct BaseLight
-{
+struct BaseLight {
 	vec3 Color;
 	float AmbientIntensity;
 	float DiffuseIntensity;
 };
 
-struct Attenuation
-{
+struct Attenuation {
 	float Constant;
 	float Linear;
 	float Exp;
 };
 
-struct PointLight
-{
-    BaseLight Base;
+struct PointLight {
+	BaseLight Base;
 	Attenuation Atten;
 };
 
@@ -32,11 +29,7 @@ float gSpecularPower = 32;
 
 out vec4 finalColor;
 
-vec4 CalcLightInternal(BaseLight Light,
-					   vec3 LightDirection,
-					   vec3 WorldPos,
-					   vec3 Normal)
-{
+vec4 CalcLightInternal(BaseLight Light, vec3 LightDirection, vec3 WorldPos, vec3 Normal) {
 	vec4 AmbientColor = vec4(Light.Color, 1.0f) * Light.AmbientIntensity;
 	float DiffuseFactor = dot(Normal, -LightDirection);
 
@@ -58,31 +51,28 @@ vec4 CalcLightInternal(BaseLight Light,
 	return (AmbientColor + DiffuseColor + SpecularColor);
 }
 
-vec4 CalcPointLight(vec3 WorldPos, vec3 Normal)
-{
+vec4 CalcPointLight(vec3 WorldPos, vec3 Normal) {
 	vec3 LightDirection = WorldPos - model[3].xyz;
 	float Distance = length(LightDirection);
 	LightDirection = normalize(LightDirection);
 
 	vec4 Color = CalcLightInternal(gPointLight.Base, LightDirection, WorldPos, Normal);
 
-	float LightAttenuation =	gPointLight.Atten.Constant +
-								gPointLight.Atten.Linear * Distance +
-								gPointLight.Atten.Exp * Distance * Distance;
+	float LightAttenuation =
+			gPointLight.Atten.Constant +
+			gPointLight.Atten.Linear * Distance +
+			gPointLight.Atten.Exp * Distance * Distance;
 
 	LightAttenuation = max(LightAttenuation, 1.0);
 
 	return Color / LightAttenuation;
 }
 
-
-vec2 CalcTexCoord()
-{
-    return gl_FragCoord.xy / gScreenSize;
+vec2 CalcTexCoord() {
+	return gl_FragCoord.xy * gScreenSize;
 }
 
-void main()
-{
+void main() {
 	vec2 TexCoord = CalcTexCoord();
 	vec3 WorldPos = texture(gPositionMap, TexCoord).xyz;
 	vec3 Color = texture(gColorMap, TexCoord).xyz;
