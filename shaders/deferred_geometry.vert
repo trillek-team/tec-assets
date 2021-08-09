@@ -1,9 +1,9 @@
 #version 330
 
 layout(location = 0) in vec3 in_Position;
-layout(location = 1) in vec4 in_Color;
-layout(location = 2) in vec3 in_Norm;
-layout(location = 3) in vec2 in_UV;
+layout(location = 1) in vec3 in_Norm;
+layout(location = 2) in vec2 in_UV;
+layout(location = 3) in vec4 in_Color;
 layout(location = 4) in vec4 boneWeight;
 layout(location = 5) in ivec4 boneIndex;
 
@@ -20,7 +20,7 @@ out vec4 Color;
 
 void main(void) {
 	vec4 animated_pos = vec4(in_Position, 1.0);
-	vec4 animated_norm =  vec4(in_Norm, 0.0);
+	vec4 animated_norm = vec4(in_Norm, 0.0);
 	if (animated == 1) {
 		animated_pos  = (animation_matrix[boneIndex.x] * vec4(in_Position, 1.0)) * boneWeight.x;
 		animated_norm = (mat3x4(animation_matrix[boneIndex.x]) * in_Norm) * boneWeight.x;
