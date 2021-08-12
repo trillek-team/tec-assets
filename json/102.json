@@ -32,9 +32,9 @@
 				"disableDeactivation": false,
 				"disableRotation": false,
 				"box": {
-					"xExtent": 0.25,
-					"yExtent": 0.55,
-					"zExtent": 0.25
+					"x": 0.25,
+					"y": 0.55,
+					"z": 0.25
 				},
 				"mass": 0
 			}
