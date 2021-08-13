@@ -3,7 +3,7 @@
 	"components": [
 		{
 			"renderable": {
-				"shaderName": "deferred",
+				"shaderName": "deferred_vcs",
 				"meshName": "vidstand/VidStand_Full.obj",
 				"hidden": false,
 				"position": {
@@ -44,11 +44,11 @@
 				"colorX": 0,
 				"colorY": 0,
 				"colorZ": 1,
-				"ambientIntensity": 0.5,
+				"ambientIntensity": 0.0,
 				"diffuseIntensity": 0.5,
 				"attenuation": {
-					"constant": 0.1,
-					"linear": 0.1,
+					"constant": 0.0,
+					"linear": 0.0,
 					"exponential": 1
 				},
 				"cutoff": 0

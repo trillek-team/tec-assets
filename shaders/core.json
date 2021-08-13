@@ -1,4 +1,23 @@
 {
+	"options":{
+		"debug_gbuffer":false,
+		"shader_sets":[
+			{
+				"default":true,
+				"pointlight":"deferred_pbr_pointlight"
+			}
+		]
+	},
+	"includes":[
+		{
+			"name":"quaternion",
+			"source":{"file":"quaternion.glsl"}
+		},
+		{
+			"name":"BRDF",
+			"source":{"file":"brdf.glsl"}
+		}
+	],
 	"shaders":[
 		{
 			"name":"debug",
@@ -11,6 +30,11 @@
 			"name":"deferred",
 			"vertex":{"file":"deferred_geometry.vert"},
 			"fragment":{"file":"deferred_geometry.frag"}
+		},
+		{
+			"name":"deferred_vcs",
+			"vertex":{"file":"deferred_geometry.vert"},
+			"fragment":{"file":"deferred_vcs.frag"}
 		},
 		{
 			"name":"deferred_debug",
@@ -28,6 +52,11 @@
 			"fragment":{"file":"deferred_dirlight.frag"}
 		},
 		{
+			"name":"deferred_pbr_pointlight",
+			"vertex":{"file":"deferred_light.vert"},
+			"fragment":{"file":"deferredpb_pointlight.frag"}
+		},
+		{
 			"name":"deferred_stencil",
 			"vertex":{"file":"deferred_light.vert"},
 			"fragment":{"file":"null.frag"}
@@ -36,6 +65,11 @@
 			"name":"deferred_shadow",
 			"vertex":{"file":"deferred_shadow.vert"},
 			"fragment":{"file":"deferred_shadow.frag"}
+		},
+		{
+			"name":"post_process",
+			"vertex":{"file":"screen_pos.vert"},
+			"fragment":{"file":"post_process.frag"}
 		}
 	]
 }

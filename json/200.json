@@ -25,14 +25,14 @@
   },
   {
    "pointLight": {
-    "colorX": 1.9607843,
-    "colorY": 0,
-    "colorZ": 0,
-    "ambientIntensity": 1,
-    "diffuseIntensity": 0.5,
+    "colorX": 24.0,
+    "colorY": 0.5,
+    "colorZ": 0.5,
+    "ambientIntensity": 0,
+    "diffuseIntensity": 1.0,
     "attenuation": {
-     "constant": 0.1,
-     "linear": 0.1,
+     "constant": 0.0,
+     "linear": 0.0,
      "exponential": 1
     },
     "cutoff": 0
