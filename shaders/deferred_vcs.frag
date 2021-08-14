@@ -21,7 +21,8 @@ void main() {
 	float roughness = 0.2;
 	if(vertex_group == 0) {
 		DiffuseOut = vec4(0.01, 0.01, 0.02, 0.0);
-		EmissionOut = vec4(fColor * vec3(0.8), 0.0);
+		fColor *= vec3(1.8);
+		EmissionOut = vec4(pow(fColor, vec3(2.15)), 0.0);
 	}
 	else {
 		metallic = 1.0;

@@ -14,10 +14,14 @@ vec2 CalcTexCoord() {
 }
 
 void main() {
+	const float GAMMA = 2.2;
 	vec2 TexCoord = CalcTexCoord();
 
 	vec3 cColor = texture(gCompositeMap, TexCoord).xyz;
 	vec3 cEmission = texture(gEmissionMap, TexCoord).xyz;
 
-	finalColor = vec4(cColor + cEmission, 1.0);
+	cColor += cEmission;
+	cColor = cColor / (cColor + vec3(1.0));
+	cColor = pow(cColor, vec3(1.0 / GAMMA));
+	finalColor = vec4(cColor, 1.0);
 }
