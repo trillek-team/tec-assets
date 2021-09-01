@@ -32,7 +32,7 @@ void main() {
 	}
 	if (TexCoord.x < 0.5) {
 		if (TexCoord.y >= 0.5) {
-			DebugColor = tWorldPos.xyz * vec3(0.01);
+			DebugColor = tWorldPos.xyz * vec3(0.1);
 			if (diag2 < 1.0) {
 				DebugColor = tEmission.xyz;
 			}

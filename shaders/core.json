@@ -16,6 +16,14 @@
 		{
 			"name":"BRDF",
 			"source":{"file":"brdf.glsl"}
+		},
+		{
+			"name":"BRDF_Dir",
+			"source":{"file":"brdf_dir.glsl"}
+		},
+		{
+			"name":"BRDF_Point",
+			"source":{"file":"brdf_point.glsl"}
 		}
 	],
 	"shaders":[

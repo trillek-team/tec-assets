@@ -29,6 +29,7 @@ uniform PointLight gPointLight;
 uniform vec2 gScreenSize;
 
 #include <BRDF>
+#include <BRDF_Point>
 
 out vec4 finalColor;
 

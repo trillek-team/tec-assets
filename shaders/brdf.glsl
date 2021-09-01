@@ -12,38 +12,6 @@ struct BRDFParam {
 const vec3 diaelec_FR0 = vec3(0.04);
 const float PI = 3.14159265359;
 
-BRDFParam CalcPointLightParams(vec3 WorldPos, vec3 Normal) {
-	BRDFParam r;
-	r.Normal = Normal;
-	vec3 LightDirection = model[3].xyz - WorldPos; // points towards light source
-	r.Distance = length(LightDirection);
-	r.LightDir = normalize(LightDirection);
-	r.LightAngle = dot(r.Normal, r.LightDir);
-	if (r.LightAngle < 0.0) {
-		discard;
-	}
-	r.ViewDir = normalize(-view_pos - WorldPos); // points towards viewport
-	r.ViewAngle = max(0.0, dot(r.Normal, r.ViewDir));
-	r.Half = normalize(r.LightDir + r.ViewDir);
-	return r;
-}
-
-BRDFParam CalcDirLightParams(vec3 WorldPos, vec3 Normal, vec3 DirNormal) {
-	BRDFParam r;
-	r.Normal = Normal;
-	vec3 LightDirection = normalize(-DirNormal); // point towards light source
-	r.Distance = length(LightDirection);
-	r.LightDir = normalize(LightDirection);
-	r.LightAngle = dot(r.Normal, r.LightDir);
-	if (r.LightAngle < 0.0) {
-		discard;
-	}
-	r.ViewDir = normalize(-view_pos - WorldPos); // points towards viewport
-	r.ViewAngle = max(0.0, dot(r.Normal, r.ViewDir));
-	r.Half = normalize(r.LightDir + r.ViewDir);
-	return r;
-}
-
 vec3 PhongLightBRDF(BRDFParam param, vec3 SpecularIntensity, float SpecularPower) {
 	vec3 LightReflect = reflect(-param.LightDir, param.Normal);
 

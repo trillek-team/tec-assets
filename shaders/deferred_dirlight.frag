@@ -22,34 +22,18 @@ uniform vec3 view_pos;
 float gMatSpecularIntensity = 1.0;
 float gSpecularPower = 1;
 
-vec4 CalcLightInternal(BaseLight Light, vec3 LightDirection, vec3 WorldPos, vec3 Normal) {
-	vec4 AmbientColor = vec4(Light.Color * Light.AmbientIntensity, 1.0);
-	float DiffuseFactor = dot(Normal, -LightDirection);
+#include <BRDF>
+#include <BRDF_Dir>
 
-	vec4 DiffuseColor  = vec4(0, 0, 0, 0);
-	vec4 SpecularColor = vec4(0, 0, 0, 0);
+vec3 SimpleDirLight(BRDFParam param, vec3 Color, float roughness, float metallic) {
+	vec3 Ambient = vec3(gDirectionalLight.Base.AmbientIntensity);
+	vec3 Specular = BlinnPhongLightBRDF(param, mix(diaelec_FR0, Color, metallic), mix(32, 0.5, roughness));
+	vec3 Ks = SchlickFresnelBRDF(param, mix(diaelec_FR0, Color, metallic));
+	vec3 Kd = vec3(1.0) - Ks;
+	vec3 Diffuse = gDirectionalLight.Base.DiffuseIntensity * param.LightAngle * Kd;
+	vec3 Luminance = Color * (Ambient + Diffuse + Specular) * gDirectionalLight.Base.Color;
 
-	if (DiffuseFactor > 0.0) {
-		DiffuseColor = vec4(Light.Color * Light.DiffuseIntensity * DiffuseFactor, 1.0);
-
-		vec3 VertexToEye = normalize(-view_pos - WorldPos);
-		vec3 LightReflect = normalize(reflect(LightDirection, Normal));
-		float SpecularFactor = dot(VertexToEye, LightReflect);
-		if (SpecularFactor > 0.0) {
-			SpecularFactor = pow(SpecularFactor, gSpecularPower);
-			SpecularColor = vec4(Light.Color * gMatSpecularIntensity * SpecularFactor, 1.0);
-		}
-	}
-
-	return (AmbientColor + DiffuseColor + SpecularColor);
-}
-
-vec4 CalcDirectionalLight(vec3 WorldPos, vec3 Normal) {
-	return CalcLightInternal(
-			gDirectionalLight.Base,
-			gDirectionalLight.Direction,
-			WorldPos,
-			Normal);
+	return Luminance;
 }
 
 vec2 CalcTexCoord() {
@@ -59,9 +43,9 @@ vec2 CalcTexCoord() {
 void main() {
 	vec2 TexCoord = CalcTexCoord();
 	vec3 WorldPos = texture(gPositionMap, TexCoord).xyz;
+	float metallic = texture(gPositionMap, TexCoord).w;
 	vec3 Color = texture(gColorMap, TexCoord).xyz;
-	vec3 Normal = texture(gNormalMap, TexCoord).xyz;
-	Normal = normalize(Normal);
-
-	FragColor = vec4(Color, 1.0) * CalcDirectionalLight(WorldPos, Normal);
+	vec3 Normal = normalize(texture(gNormalMap, TexCoord).xyz);
+	float roughness = texture(gNormalMap, TexCoord).w;
+	FragColor = vec4(SimpleDirLight(CalcDirLightParams(WorldPos, Normal, gDirectionalLight.Direction), Color, roughness, metallic), 1.0);
 }
