@@ -6,7 +6,7 @@ BRDFParam CalcPointLightParams(vec3 WorldPos, vec3 Normal) {
 	r.Distance = length(LightDirection);
 	r.LightDir = normalize(LightDirection);
 	r.LightAngle = dot(r.Normal, r.LightDir);
-	if (r.LightAngle < 0.0) {
+	if (r.LightAngle < 0.01) {
 		discard;
 	}
 	r.ViewDir = normalize(-view_pos - WorldPos); // points towards viewport
