@@ -3,7 +3,7 @@
  "components": [
   {
    "renderable": {
-    "shaderName": "deferred",
+    "shaderName": "deferred_vcs",
     "meshName": "vidstand/VidStand_Full.obj",
     "hidden": false,
     "position": {
@@ -32,23 +32,23 @@
     "disableDeactivation": false,
     "disableRotation": false,
     "box": {
-     "xExtent": 0.25,
-     "yExtent": 0.55,
-     "zExtent": 0.25
+     "x": 0.25,
+     "y": 0.55,
+     "z": 0.25
     },
     "mass": 0
    }
   },
   {
    "pointLight": {
-    "colorX": 0,
+    "colorX": 0.25,
     "colorY": 1,
-    "colorZ": 0,
-    "ambientIntensity": 0.5,
-    "diffuseIntensity": 0.5,
+    "colorZ": 0.25,
+    "ambientIntensity": 0.0,
+    "diffuseIntensity": 1.5,
     "attenuation": {
-     "constant": 0.1,
-     "linear": 0.1,
+     "constant": 0.0,
+     "linear": 0.0,
      "exponential": 1
     },
     "cutoff": 0

@@ -12,13 +12,24 @@ layout (location = 3) out vec4 EmissionOut;
 
 uniform sampler2D mColorMap;
 uniform sampler2D mSPMap;
+uniform int vertex_group;
 
 void main() {
+	vec3 fColor = texture(mColorMap, TexCoord0).xyz;
 	vec4 sparam = texture(mSPMap, TexCoord0);
-	float metallic = sparam.r;
-	float roughness = sparam.g;
+	float metallic = 0.0;
+	float roughness = 0.2;
+	if(vertex_group == 0) {
+		DiffuseOut = vec4(0.01, 0.01, 0.02, 0.0);
+		fColor *= vec3(1.8);
+		EmissionOut = vec4(pow(fColor, vec3(2.15)), 0.0);
+	}
+	else {
+		metallic = 1.0;
+		roughness = 0.27;
+		DiffuseOut = vec4(fColor, 0.0);
+		EmissionOut = vec4(0.0);
+	}
 	WorldPosOut = vec4(WorldPos0, metallic);
-	DiffuseOut = vec4(texture(mColorMap, TexCoord0).xyz, 0.0);
 	NormalOut = vec4(Normal0, roughness);
-	EmissionOut = vec4(0.0);
 }
