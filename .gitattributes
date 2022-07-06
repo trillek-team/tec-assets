@@ -1,0 +1,7 @@
+* text=auto
+
+#text assets
+*.md5anim text eol=lf
+*.md5mesh text eol=lf
+*.obj text eol=lf
+*.mtl text eol=lf
