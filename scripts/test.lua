@@ -1,6 +1,7 @@
 -- test.lua	
 require "schematics/core"
 require "key_codes"
+require "util"
 
 foo = 4
 bar = {}
@@ -9,7 +10,7 @@ bar["key"] = "there"
 
 print("test")
 
-print(schematics)
+print(dumpTable(schematics))
 
 function onUpdate(delta)
 --  print(tostring(delta)) -- noisy, just showing example
